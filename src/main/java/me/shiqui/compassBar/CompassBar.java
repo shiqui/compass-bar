@@ -3,6 +3,7 @@ package me.shiqui.compassBar;
 import me.shiqui.compassBar.commands.CompassCommand;
 import me.shiqui.compassBar.tasks.CompassUpdater;
 import org.bukkit.boss.BossBar;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -14,9 +15,16 @@ public final class CompassBar extends JavaPlugin {
 
     @Override
     public void onEnable() {
-//        saveDefaultConfig();
-        Objects.requireNonNull(getCommand("compass")).setExecutor(new CompassCommand(compassBars));
-        new CompassUpdater(compassBars).runTaskTimer(this, 0, 1);
+        // Load config
+        saveDefaultConfig();
+        FileConfiguration config = this.getConfig();
+        int updateInterval = config.getInt("bar.refresh-rate");
+
+        // Register commands
+        Objects.requireNonNull(getCommand("compass")).setExecutor(new CompassCommand(compassBars, config));
+
+        // Start Updater
+        new CompassUpdater(compassBars, config).runTaskTimer(this, 0, updateInterval);
     }
 
     @Override

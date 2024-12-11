@@ -1,0 +1,11 @@
+prefix: '<dark_green>[CompassBar] <dark_green>'
+
+bar:
+  width: 100
+  string: "N   |   |   |   NE   |   |   |   E   |   |   |   ES   |   |   |   S   |   |   |   SW   |   |   |   W   |   |   |   WN   |   |   |   "
+  refresh-rate: 1
+
+msg:
+  toggled-on: "<white>Compass bar toggled on<white>"
+  toggled-off: "<white>Compass bar toggled off<white>"
+  error: "<red>Invalid syntax<red>"

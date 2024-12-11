@@ -1,5 +1,5 @@
 name: compass-bar
-version: '1.0-SNAPSHOT'
+version: '1.0'
 main: me.shiqui.compassBar.CompassBar
 api-version: '1.21'
 
